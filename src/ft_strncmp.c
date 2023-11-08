@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhovhann <vhovhann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 20:02:01 by vhovhann          #+#    #+#             */
-/*   Updated: 2023/01/21 13:08:30 by vhovhann         ###   ########.fr       */
+/*   Created: 2022/11/20 17:14:28 by vhovhann          #+#    #+#             */
+/*   Updated: 2023/09/14 18:57:36 by vhovhann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+	unsigned int	i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && (i < n))
+	{
+		if (s1[i] != s2[i])
+			return (1);
+		if (s1[i] != s2[i])
+			return (-1);
+		i++;
+	}
+	return (0);
 }
+
+/*int main()
+{
+	char p[] = "abcdaaa";
+	char c[] = "abcd";
+
+	printf("%d", ft_strncmp(p,c,10));
+}*/

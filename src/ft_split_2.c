@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhovhann <vhovhann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:58:07 by vhovhann          #+#    #+#             */
-/*   Updated: 2023/02/02 18:34:26 by vhovhann         ###   ########.fr       */
+/*   Updated: 2023/08/25 19:49:08 by vhovhann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static	size_t	ft_str_word(const char *s, char c)
 	return (nw);
 }
 
-static char	*ft_sub_str1(char const *s, unsigned int start, size_t len)
+static char	*ft_sub_str1(char *s, unsigned int start, size_t len)
 {
 	size_t	j;
 	size_t	k;
@@ -65,7 +65,7 @@ static char	*ft_sub_str1(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-static char	**ft_chek_arr(const char *s, char c, char **arr)
+static char	**ft_chek_arr(char *s, char c, char **arr)
 {
 	size_t	i;
 	size_t	k;
@@ -92,7 +92,7 @@ static char	**ft_chek_arr(const char *s, char c, char **arr)
 	return (arr);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split_2(char *s, char c)
 {
 	char	**arr;
 

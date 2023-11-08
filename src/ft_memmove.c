@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhovhann <vhovhann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 16:25:39 by vhovhann          #+#    #+#             */
-/*   Updated: 2023/02/02 20:28:31 by vhovhann         ###   ########.fr       */
+/*   Created: 2023/01/21 14:05:29 by vhovhann          #+#    #+#             */
+/*   Updated: 2023/08/08 13:01:09 by vhovhann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_memmove(void *dst, void *src, size_t n)
 {
-	int	neg;
-	int	num;
+	size_t	i;
 
-	neg = 1;
-	num = 0;
-	if (!str)
+	i = 0;
+	if (!dst && !src)
 		return (0);
-	while (*str && ((*str == ' ') || *str == '\t' || *str == '\r'
-			|| *str == '\f' || *str == '\v' || *str == '\n'))
-		str++;
-	if (*str == '+' || *str == '-')
+	if (n == 0)
+		return ((unsigned char *)dst);
+	if ((size_t)dst - (size_t)src < n)
 	{
-		if (*str == '-')
-			neg *= -1;
-		str++;
+		i = n - 1;
+		while (i < n)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i--;
+		}
 	}
-	while (*str >= '0' && *str <= '9')
+	else
 	{
-		num = num * 10 + (*str - '0');
-		str++;
+		while (i < n)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
-	return (num * neg);
+	return (dst);
 }

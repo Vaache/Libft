@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhovhann <vhovhann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 12:53:13 by vhovhann          #+#    #+#             */
-/*   Updated: 2023/02/05 16:01:28 by vhovhann         ###   ########.fr       */
+/*   Created: 2023/01/17 16:25:39 by vhovhann          #+#    #+#             */
+/*   Updated: 2023/08/10 14:56:52 by vhovhann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nitems, size_t size)
+int	ft_atoi(char *str)
 {
-	char	*ptr;
+	int	neg;
+	int	num;
 
-	if (nitems == SIZE_MAX || size == SIZE_MAX)
-		return (NULL);
-	ptr = malloc(nitems * size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, (nitems * size));
-	return (ptr);
+	neg = 1;
+	num = 0;
+	if (!str)
+		return (0);
+	while (*str && ((*str == ' ') || *str == '\t' || *str == '\r'
+			|| *str == '\f' || *str == '\v' || *str == '\n'))
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			neg *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		num = num * 10 + (*str - '0');
+		str++;
+	}
+	return (num * neg);
 }
